@@ -1,0 +1,38 @@
+{
+  "name": "zeyo-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --exec \"node --loader ts-node/esm src/server.ts\"",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "typeorm": "node ./node_modules/typeorm/cli.js",
+    "typeorm:run": "npm run build && node ./node_modules/typeorm/cli.js migration:run -d dist/config/data-source.js",
+    "typeorm:revert": "npm run build && node ./node_modules/typeorm/cli.js migration:revert -d dist/config/data-source.js",
+    "typeorm:show": "npm run build && node ./node_modules/typeorm/cli.js migration:show -d dist/config/data-source.js",
+    "migration:create": "node --loader ts-node/esm ./node_modules/typeorm/cli.js migration:create src/migrations/NamedMigration",
+    "migration:generate": "npm run build && node ./node_modules/typeorm/cli.js migration:generate src/migrations/auto -d dist/config/data-source.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.25",
+    "zod": "^4.0.17"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.0",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
